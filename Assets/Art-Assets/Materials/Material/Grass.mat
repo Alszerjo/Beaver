@@ -8,7 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Grass
   m_Shader: {fileID: 4800000, guid: 1902925be899f6c4794040c4a1c39b50, type: 3}
-  m_ShaderKeywords: GRASS_UNLIT_LIGHTING GRASS_UNSHADED_LIGHTING SIMPLE_GRASS
+  m_ShaderKeywords: GRASS_FOLLOW_SURFACE_NORMAL GRASS_HEIGHT_SMOOTHING GRASS_IGNORE_GI_SPECULAR
+    GRASS_UNLIT_LIGHTING GRASS_WIDTH_SMOOTHING SIMPLE_GRASS VERTEX_DENSITY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -90,7 +91,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Disorder: 0.5
     - _DstBlend: 0
-    - _EdgeLength: 5
+    - _EdgeLength: 20
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -117,7 +118,7 @@ Material:
     - _Smoothness02: 0.5
     - _Smoothness03: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Softness00: 0.5
+    - _Softness00: 1
     - _Softness01: 0.5
     - _Softness02: 0.5
     - _Softness03: 0.5
@@ -146,7 +147,7 @@ Material:
     m_Colors:
     - _BurnColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color00: {r: 0.58124185, g: 0.8018868, b: 0.3517711, a: 1}
+    - _Color00: {r: 0.29803923, g: 0.8117648, b: 0.21176472, a: 1}
     - _Color01: {r: 0.5, g: 0.7, b: 0.3, a: 1}
     - _Color02: {r: 0.5, g: 0.7, b: 0.3, a: 1}
     - _Color03: {r: 0.5, g: 0.7, b: 0.3, a: 1}

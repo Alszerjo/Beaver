@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelTile : MonoBehaviour {
 
-	static LevelTile[,] TileMatrix;
+	static public LevelTile[,] TileMatrix;
 
 	[Header("Init Only")]
 	[SerializeField]
@@ -12,27 +12,33 @@ public class LevelTile : MonoBehaviour {
 	[SerializeField]
 	private int MatrixHeight;
 	public GameObject BaseTile;
-	[HideInInspector]
+	public GameObject DugTile;
+	//[HideInInspector]
 	public int X, Y;
-	public GameObject ReplaceTest;
+	static private Transform LevelParent;
+	private float pos_scale = 2f;
 
 	void Start () {
 		if (TileMatrix == null) {
+			LevelParent = transform;
 			TileMatrix = new LevelTile[MatrixHeight, MatrixWidth];
 			for (int y = 0; y < MatrixWidth; y++) {
 				for (int x = 0; x < MatrixHeight; x++) {
-					GameObject t = Instantiate(BaseTile, transform.position + (Vector3.right * y) + (Vector3.forward * x), Quaternion.identity);
+					GameObject t = Instantiate(BaseTile, transform.position + (Vector3.right * y * pos_scale) + (Vector3.forward * x * pos_scale), Quaternion.identity, LevelParent);
 					LevelTile lt = t.AddComponent<LevelTile> ();
 					lt.X = x;
 					lt.Y = y;
 					TileMatrix [x, y] = lt;
 				}
 			}
-			TileMatrix [3, 7].ReplaceTile (ReplaceTest);
+			Diggable.DugGround = DugTile;
+			Diggable.MarkedTiles = new List<Diggable> ();
+			GameObject.FindObjectOfType<FlagTools> ().CreateHazards ();
 		}
 	}
 
-	void ReplaceTile(GameObject newTile){
+	public void ReplaceTile(GameObject newTile){
+		newTile.transform.parent = LevelParent;
 		LevelTile lt = newTile.AddComponent<LevelTile> ();
 		lt.X = X;
 		lt.Y = Y;
